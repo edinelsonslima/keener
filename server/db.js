@@ -12,6 +12,6 @@ const sequelize = new Sequelize(
   }
 );
 
-console.log(process.env.MYSQL_USER)
+console.log(process.env.MYSQL_DATABASE)
 
 module.exports = sequelize

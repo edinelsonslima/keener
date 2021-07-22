@@ -1,0 +1,49 @@
+{
+  "name": "express-mysql-session",
+  "description": "A MySQL session store for express.js",
+  "version": "2.1.6",
+  "main": "index.js",
+  "scripts": {
+    "benchmarks": "./node_modules/.bin/mocha test/benchmarks/ --recursive --reporter spec --ui bdd",
+    "lint": "./node_modules/.bin/eslint --config .eslintrc.js *.js test/**/*.js",
+    "prepare": "npm run test",
+    "pretest": "npm run lint",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:integration": "./node_modules/.bin/mocha test/integration/ --recursive --reporter spec --ui bdd",
+    "test:unit": "./node_modules/.bin/mocha test/unit/ --recursive --reporter spec --ui bdd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chill117/express-mysql-session"
+  },
+  "author": {
+    "name": "Charles Hill",
+    "email": "chill@degreesofzero.com"
+  },
+  "license": "MIT",
+  "funding": {
+    "type": "individual",
+    "url": "https://degreesofzero.com/donate.html?project=express-mysql-session"
+  },
+  "dependencies": {
+    "debug": "4.3.1",
+    "express-session": "1.17.1",
+    "mysql": "2.18.1",
+    "underscore": "1.13.1"
+  },
+  "devDependencies": {
+    "async": "3.2.0",
+    "benchmark": "2.1.4",
+    "chai": "4.3.4",
+    "cookie-parser": "1.4.5",
+    "eslint": "7.26.0",
+    "express": "4.17.1",
+    "mocha": "8.4.0",
+    "mysql2": "2.2.5",
+    "promise-mysql": "5.0.3"
+  },
+  "readmeFilename": "readme.md",
+  "bugs": {
+    "url": "https://github.com/chill117/express-mysql-session/issues"
+  }
+}

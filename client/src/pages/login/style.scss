@@ -1,0 +1,87 @@
+main {
+  align-items: center;
+  background-color: #36758838;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  height: calc(100vh - 100px);
+  justify-content: flex-start;
+  padding: 0 7px;
+  padding-top: 100px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    height: 100%;
+    max-height: 370px;
+    max-width: 574px;
+    width: 100%;
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      label.form-label {
+        color: #367588;
+        font-weight: bold;
+      }
+
+      input.form-input {
+        background-color: #94c5d4;
+        border-radius: 7px;
+        border: none;
+        outline: none;
+        padding: 7px 2px 7px 5px;
+        font-size: 16px;
+
+        &:focus {
+          border: 1px solid #367588;
+        }
+      }
+    }
+
+    div.form-submit {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      input[type="submit"].form-input {
+        background: linear-gradient(to right, #367588, #94c5d4);
+        border-radius: 7px;
+        border: none;
+        color: #ffff;
+        font-size: 16px;
+        font-weight: bold;
+        max-width: 100px;
+        width: 100%;
+        padding: 7px;
+        cursor: pointer;
+
+        &:hover {
+            background: linear-gradient(to right,#94c5d4, #367588);
+        }
+
+        &:active{
+            transform: translateY(2px);
+        }
+      }
+
+      a.cadastro-user{
+          text-decoration: none;
+          color: #367588;
+
+          &:hover{
+              text-decoration: underline;
+          }
+      }
+    }
+  }
+
+  div.img-container {
+    max-width: 574px;
+    max-height: 370px;
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const produto = require("../model/model_produto");
+const {Produto} = require("../model/create_tables");
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
@@ -10,12 +10,12 @@ router.use(function timeLog(req, res, next) {
 
 // Rota para listar todos os produtos
 router.get("/", function (req, res) {
-  produto.findAll().then((result) => res.json(result));
+  Produto.findAll().then((result) => res.json(result));
 });
 
 // Rota para buscar produto especifico
 router.get("/:id", function (req, res) {
-  produto.findByPk(req.params.id).then((result) => {
+  Produto.findByPk(req.params.id).then((result) => {
     if (!result) return res.status(204).json();
     return res.json(result);
   });
@@ -23,7 +23,7 @@ router.get("/:id", function (req, res) {
 
 // Rota para adicionar novo produto
 router.post("/", function (req, res) {
-  produto
+  Produto
     .create({
       nome: req.body.nome,
       preco: req.body.preco,
@@ -34,7 +34,7 @@ router.post("/", function (req, res) {
 
 //Rota put
 router.put("/:id", function (req, res) {
-  produto.update(
+  Produto.update(
     {
       nome: req.body.nome,
       preco: req.body.preco,
@@ -47,7 +47,7 @@ router.put("/:id", function (req, res) {
     }
   );
 
-  produto.findByPk(req.params.id).then((result) => {
+  Produto.findByPk(req.params.id).then((result) => {
     if (!result) return res.status(204).json();
     return res.json(result);
   });
@@ -55,13 +55,13 @@ router.put("/:id", function (req, res) {
 
 //Rota Delete
 router.delete("/:id", function (req, res) {
-  produto.destroy({
+  Produto.destroy({
     where: {
       id: req.params.id,
     },
   });
 
-  produto.findByPk(req.params.id).then((result) => {
+  Produto.findByPk(req.params.id).then((result) => {
     if (!result) return res.status(204).json();
     return res.json(result);
   });

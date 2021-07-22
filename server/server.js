@@ -1,20 +1,18 @@
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
-const db = require('./db')
+//require app express
+const app = require("./src/services/app");
 
+//requires routers
+const produto = require("./src/router/route_produto");
 
-// Configuração
+//MySQL
+const db = require('./src/services/db')
 
-    // Body Parser
-    app.use(bodyParser.urlencoded({extended: true}))
-    app.use(bodyParser.json())
-
-    // console.log(db )
-
+//Rotas
+app.use("/produto", produto);
 
 //Iniciando servidor
-const PORT = 8081
-app.listen(PORT,()=>{
-    console.log('Servidor rodando na porta 8081')
-})
+const PORT = 8081;
+app.listen(PORT, () => {
+  console.log("Servidor rodando na porta 8081!!!");
+});
+

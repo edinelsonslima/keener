@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { AuthContext } from "../../auth/auth";
+import { AuthContext } from "../../context/useAuth";
 import axios from "axios";
 
 import eyeIMG from "../../assets/eye.png";

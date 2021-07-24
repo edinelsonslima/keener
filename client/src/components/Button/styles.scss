@@ -1,0 +1,18 @@
+button.button {
+  height: 40px;
+  background: #367588;
+  border-radius: 7px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  outline: none;
+  padding: 0 10px;
+  &:hover {
+    filter: invert(0.1);
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+}

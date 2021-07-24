@@ -1,13 +1,14 @@
 main.home {
+  background: linear-gradient(0deg, #e4e4e45b, #e4e4e45b),  url("../../assets//keener.png") center;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.309);
   display: flex;
   flex-direction: column;
+  height: 100vh;
   margin: auto;
   max-width: 1400px;
-  height: 100vh;
   width: 100%;
-  background: url("../../assets//keener.png") center;
-  background-repeat: no-repeat;
-  background-size: 80vh;
+
   nav.navbar-home {
     align-items: center;
     background-color: #1d3d47;
@@ -19,6 +20,8 @@ main.home {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1;
+    position: relative;
 
     img.logo-nav {
       width: 95px;
@@ -47,41 +50,12 @@ main.home {
     gap: 10px;
     margin-top: 60px;
     padding: 15px 7px;
+    position: absolute;
+    top: 0;
+    max-width: 1400px;
     width: 100%;
-    border-bottom: 1px solid #36758843;
-
-    button {
-      height: 40px;
-      background: #367588;
-      border-radius: 7px;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-      outline: none;
-      padding: 0 10px;
-      &:hover {
-        filter: invert(0.1);
-      }
-      &:active {
-        transform: translateY(1px);
-      }
-    }
-  }
-
-  section.produtos {
-    display: flex;
-    flex-wrap:wrap;
-    gap: 15px;
-    height: 100%;
-    justify-content: center;
-    overflow-y: scroll;
-    padding: 20px 10px;
-    width: 100%;
-
-    &::-webkit-scrollbar{
-      display: none;
-    }
+    z-index: 1;
+    background-color: #e4e4e4;
+    box-shadow: 0 8px 15px #00000021;
   }
 }

@@ -2,7 +2,7 @@ div.card{
     align-items: center;
     background-color: #fff;
     border-radius: 7px;
-    box-shadow: 0 0 15px #0000004f;
+    box-shadow: 0 0 15px #00000021;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@ div.card{
     width: 100%;
     padding: 5px;
     &:hover{
-        filter: invert(0.05);
+        background: #c0cbee;
     }
     &:active{
         transform: scale(1.1);

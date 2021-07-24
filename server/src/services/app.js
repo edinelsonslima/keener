@@ -32,4 +32,8 @@ require("../auth/auth")(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
+//Cors
+const cors = require("cors")
+app.use(cors())
+
 module.exports = app;

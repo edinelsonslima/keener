@@ -1,15 +1,15 @@
-main {
+main.login {
   align-items: center;
   background-color: #36758838;
   display: flex;
   flex-direction: column;
   gap: 50px;
-  height: calc(100vh - 100px);
+  height: 100vh;
   justify-content: flex-start;
   padding: 0 7px;
   padding-top: 100px;
 
-  form {
+  form.login-form {
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -30,21 +30,34 @@ main {
       input.form-input {
         background-color: #94c5d4;
         border-radius: 7px;
-        border: none;
-        outline: none;
-        padding: 7px 2px 7px 5px;
         font-size: 16px;
-
+        outline: none;
+        padding: 7px 35px 7px 5px;
+        width: 100%;
         &:focus {
           border: 1px solid #367588;
+        }
+      }
+      div.password-container {
+        align-items: center;
+        display: flex;
+        position: relative;
+        width: 100%;
+
+        img {
+          cursor: pointer;
+          opacity: 0.5;
+          position: absolute;
+          right: 5px;
+          width: 30px;
         }
       }
     }
 
     div.form-submit {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
       input[type="submit"].form-input {
         background: linear-gradient(to right, #367588, #94c5d4);
         border-radius: 7px;
@@ -58,21 +71,21 @@ main {
         cursor: pointer;
 
         &:hover {
-            background: linear-gradient(to right,#94c5d4, #367588);
+          background: linear-gradient(to right, #94c5d4, #367588);
         }
 
-        &:active{
-            transform: translateY(2px);
+        &:active {
+          transform: translateY(2px);
         }
       }
 
-      a.cadastro-user{
-          text-decoration: none;
-          color: #367588;
+      a.cadastro-user {
+        text-decoration: none;
+        color: #367588;
 
-          &:hover{
-              text-decoration: underline;
-          }
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -82,6 +95,7 @@ main {
     max-height: 370px;
     img {
       width: 100%;
+      filter: drop-shadow(0 0 5px #0000003d);
     }
   }
 }

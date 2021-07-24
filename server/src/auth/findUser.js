@@ -11,13 +11,8 @@ async function findUser(username) {
 }
 
 async function findUserById(id) {
-
-   const userId = await User.findAll({
-      where: {
-        id: id,
-      },
-    })
-    return userId
+  const userId = await User.findByPk(id);
+  return userId;
 }
 
 module.exports = { findUser, findUserById };

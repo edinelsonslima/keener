@@ -1,32 +1,27 @@
+const { findUser } = require("../auth/findUser.js");
 const express = require("express");
-const router = express.Router();
+const jwt = require("jsonwebtoken");
 const passport = require("passport");
-
-// middleware that is specific to this router
-// router.use(function timeLog(req, res, next) {
-//   console.log("Time: ", Date.now());
-//   next();
-// });
-
-//Retorna uma mensagem de erro
-router.get("/", (req, res, next) => {
-  if (req.query.fail)
-    res.json({
-      login: "login",
-      message: "Usuário e/ou senha incorretos!",
-    });
-  else
-    res.json({
-      login: "login",
-      message: null,
-    });
-});
+const router = express.Router();
+require("dotenv/config");
 
 //Pega as informações de login
-router.post("/", passport.authenticate("local", {
-    successRedirect: "/success",
+router.post(
+  "/",
+  passport.authenticate("local", {
     failureRedirect: "/login?fail=true",
-  })
-)
+  }),
+  async (req, res) => {
+    const user = await findUser(req.body.user);
+    if (user.length <= 0) return res.status(401).end();
+
+    const token = jwt.sign({ userId: user[0].id }, process.env.SECRET_TOKEN, {
+      expiresIn: 300,
+    });
+    return res.json({ auth: true, token: token });
+
+    res.status(500).json({ message: "Login inválido!" });
+  }
+);
 
 module.exports = router;

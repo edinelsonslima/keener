@@ -45,10 +45,44 @@ export const handlerSearch = async (id) => {
       mode: "cors",
       cache: "default",
     });
-     return data;
+    return data;
   } catch (error) {
     console.log("buscar " + error);
     return false;
   }
 };
 
+export const handlerUpdate = async (id, nome, descricao, preco) => {
+  try {
+    const { data } = await axios({
+      method: "put",
+      url: `/produto/${id}`,
+      data: {
+        nome: nome,
+        descricao: descricao,
+        preco: preco,
+      },
+      mode: "cors",
+      cache: "default",
+    });
+    return data;
+  } catch (error) {
+    console.log("Update " + error);
+    return false;
+  }
+};
+
+export const handlerDelete = async (id) => {
+  try {
+    const { data } = await axios({
+      method: "del",
+      url: `/produto/${id}`,
+      mode: "cors",
+      cache: "default",
+    });
+    return data;
+  } catch (error) {
+    console.log("Delete " + error);
+    return false;
+  }
+};

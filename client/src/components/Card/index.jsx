@@ -18,7 +18,7 @@ export default function Card(props) {
       <div className="front">
         <h1 className="nome-card">{props.nome}</h1>
         <p className="descricao-card">{props.descricao}</p>
-        <p className="preco-card">R${props.preco}</p>
+        <p className="preco-card">{props.preco}</p>
         <input type="hidden" value={props.chave} />
       </div>
       <div className="back">

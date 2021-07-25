@@ -1,31 +1,24 @@
-import axios from "axios";
 import { useState } from "react";
 import "./style.scss";
+
+import { handlerAddProduct } from "../../services/api";
 
 export default function Form(props) {
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [preco, setPreco] = useState("");
 
-  function handlerAddProduct(e) {
+  async function handlerAdd(e) {
     e.preventDefault();
-    try {
-      axios({
-        method: "post",
-        url: "/produto",
-        data: {
-          nome: nome,
-          descricao: descricao,
-          preco: preco,
-        },
-      });
+    const bool = await handlerAddProduct(nome, descricao, preco);
+
+    if (bool) {
       setNome("");
       setDescricao("");
       setPreco("");
-    } catch (error) {
-      console.log("Adicionar: " + error);
     }
   }
+
   return (
     <div className="overlay" style={props.style}>
       <h1 className="title-adicionar">Adicionar novo produto</h1>
@@ -33,7 +26,7 @@ export default function Form(props) {
         action="/produto"
         method="post"
         className="form-adicionar"
-        onSubmit={handlerAddProduct}
+        onSubmit={handlerAdd}
       >
         <input
           required
@@ -69,3 +62,23 @@ export default function Form(props) {
     </div>
   );
 }
+
+// function handlerAddProduct(e) {
+//   e.preventDefault();
+//   try {
+//     axios({
+//       method: "post",
+//       url: "/produto",
+//       data: {
+//         nome: nome,
+//         descricao: descricao,
+//         preco: preco,
+//       },
+//     });
+//     setNome("");
+//     setDescricao("");
+//     setPreco("");
+//   } catch (error) {
+//     console.log("Adicionar: " + error);
+//   }
+// }

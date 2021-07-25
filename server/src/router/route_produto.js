@@ -16,7 +16,9 @@ router.get("/", async function (req, res) {
 
 // Rota para buscar produto especifico
 router.get("/:id", async function (req, res) {
-  const responseId = await Produto.findByPk(req.params.id);
+  const responseId = await Produto.findAll({
+    where: { id: req.params.id },
+  });
 
   const responseNome = await Produto.findAll({
     where: { nome: req.params.id },
@@ -31,7 +33,7 @@ router.get("/:id", async function (req, res) {
   });
 
   if (responsePreco.length > 0) return res.json(responsePreco);
-  if (responseId) return res.json(responseId);
+  if (responseId.length > 0) return res.json(responseId);
   if (responseNome.length > 0) return res.json(responseNome);
   if (responseDesc.length > 0) return res.json(responseDesc);
 
@@ -39,7 +41,7 @@ router.get("/:id", async function (req, res) {
     responsePreco.length === 0 &&
     responseNome.length === 0 &&
     responseDesc.length === 0 &&
-    !responseId
+    responseId.length === 0
   )
     return res.status(404).json(responseId);
 });
@@ -83,8 +85,8 @@ router.delete("/:id", async function (req, res) {
   });
 
   const response = await Produto.findByPk(req.params.id);
-  if (!response) return res.json({Aviso: "Apagado com sucesso"});
-  return res.json(response).status(500)
+  if (!response) return res.json({ Aviso: "Apagado com sucesso" });
+  return res.json(response).status(500);
 });
 
 module.exports = router;

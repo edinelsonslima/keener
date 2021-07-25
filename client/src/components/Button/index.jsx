@@ -8,7 +8,6 @@ export default function Button(props) {
   const [state, setState] = useState(false);
   function handlerClick() {
     state ? setState(false) : setState(true);
-    console.log(state);
   }
 
   return props.adicionar ? (

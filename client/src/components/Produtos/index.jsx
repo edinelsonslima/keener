@@ -1,47 +1,23 @@
-import { useEffect, useState, useContext, useMemo } from "react";
-import axios from "axios";
-
-import Card from "../Card";
+import { useEffect, useContext } from "react";
+import { handlerGetProducts } from "../../services/api";
+import { handlerListProducts } from "../../services/showCards";
 
 import "./style.scss";
-import { CardProvider, CardContext } from "../../context/useCards";
+import { CardContext } from "../../context/useCards";
 
 export default function Produtos() {
   const { cards, setCards } = useContext(CardContext);
 
-  async function handlerGetProducts() {
-    try {
-      const { data } = await axios({
-        method: "GET",
-        url: "/produto",
-        mode: "cors",
-        cache: "default",
-      });
-      handlerListProducts(data);
-    } catch (error) {
-      console.log("Get all produtos: " + error);
-    }
-  }
-
-  function handlerListProducts(data) {
-    const cardsAux = [];
+  async function handlerGet() {
+    const data = await handlerGetProducts();
     if (data) {
-      Object.values(data).map((produto, index) => {
-        return cardsAux.push([
-          <Card
-            key={index}
-            nome={produto.nome}
-            descricao={produto.descricao}
-            preco={produto.preco}
-          />,
-        ]);
-      });
-      setCards(cardsAux);
+      const listCards = await handlerListProducts(data);
+      setCards(listCards);
     }
   }
 
   useEffect(() => {
-    handlerGetProducts();
+    handlerGet();
   },[]);
 
   return (

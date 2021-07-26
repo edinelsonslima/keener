@@ -8,7 +8,6 @@ main.home {
   margin: auto;
   max-width: 1400px;
   width: 100%;
-
   nav.navbar-home {
     align-items: center;
     background-color: #1d3d47;
@@ -17,7 +16,7 @@ main.home {
     left: 0;
     height: 60px;
     padding: 10px;
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
     z-index: 1;

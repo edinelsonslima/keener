@@ -4,7 +4,7 @@ export const api = axios.create({
   baseURL: "http://localhost:8081",
 });
 
-export const handlerAddProduct = (nome, descricao, preco) => {
+export const handlerAdd = (nome, descricao, preco) => {
   try {
     axios({
       method: "post",
@@ -22,7 +22,7 @@ export const handlerAddProduct = (nome, descricao, preco) => {
   }
 };
 
-export const handlerGetProducts = async () => {
+export const handlerGet = async () => {
   try {
     const { data } = await axios({
       method: "GET",
@@ -75,7 +75,7 @@ export const handlerUpdate = async (id, nome, descricao, preco) => {
 export const handlerDelete = async (id) => {
   try {
     const { data } = await axios({
-      method: "del",
+      method: "delete",
       url: `/produto/${id}`,
       mode: "cors",
       cache: "default",

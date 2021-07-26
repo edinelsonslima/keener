@@ -1,5 +1,5 @@
 import { useEffect, useContext } from "react";
-import { handlerGetProducts } from "../../services/api";
+import { handlerGet } from "../../services/api";
 import { handlerListProducts } from "../../services/showCards";
 
 import "./style.scss";
@@ -8,16 +8,15 @@ import { CardContext } from "../../context/useCards";
 export default function Produtos() {
   const { cards, setCards } = useContext(CardContext);
 
-  async function handlerGet() {
-    const data = await handlerGetProducts();
-    if (data) {
-      const listCards = await handlerListProducts(data);
-      setCards(listCards);
-    }
-  }
-
   useEffect(() => {
-    handlerGet();
+    async function handlerGetProducts() {
+      const data = await handlerGet();
+      if (data) {
+        const listCards = await handlerListProducts(data);
+        setCards(listCards);
+      }
+    }
+    handlerGetProducts();
   },[]);
 
   return (

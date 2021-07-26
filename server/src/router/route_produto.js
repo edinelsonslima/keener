@@ -78,15 +78,18 @@ router.put("/:id", async function (req, res) {
 
 //Rota Delete
 router.delete("/:id", async function (req, res) {
+  const response = await Produto.findByPk(req.params.id)
+  if(!response) return res.send(false).status(400)
+
   await Produto.destroy({
     where: {
       id: req.params.id,
     },
   });
 
-  const response = await Produto.findByPk(req.params.id);
-  if (!response) return res.json({ Aviso: "Apagado com sucesso" });
-  return res.json(response).status(500);
+  const responseDel = await Produto.findByPk(req.params.id);
+  if (!responseDel) return res.send(true);
+  return res.json(responseDel).status(404);
 });
 
 module.exports = router;

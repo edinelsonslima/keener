@@ -7,7 +7,7 @@ export const handlerListProducts = (data) => {
       style: "currency",
       currency: "BRL",
     });
-    return cardsAux.push([
+    return cardsAux.unshift([
       <Card
         key={index}
         chave={produto.id}

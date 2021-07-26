@@ -1,5 +1,4 @@
 button.button {
-  height: 40px;
   background: #367588;
   border-radius: 7px;
   border: none;
@@ -7,6 +6,7 @@ button.button {
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
+  height: 40px;
   outline: none;
   padding: 0 10px;
   &:hover {

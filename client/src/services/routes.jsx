@@ -1,10 +1,10 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { AuthProvider } from "../context/useAuth";
 import { CardProvider } from "../context/useCards";
 import Login from "../pages/login";
+import User from "../pages/user";
+import Profile from "../pages/profile";
 import Home from "../pages/home";
-import Popup from "../components/PopUp";
-
 
 export default function Routes() {
   return (
@@ -13,8 +13,12 @@ export default function Routes() {
         <BrowserRouter>
           <Switch>
             <Route path="/login" exact component={Login} />
+            <Route path="/new_user" exact>
+              <User title="Novo usuário" back="/login" enviar="Cadastra"/>
+            </Route>
+            <Route path="/profile" exact component={Profile} />
             <Route path="/" exact component={Home} />
-            <Route path="/pop" exact component={Popup}/>
+            <Redirect from="*" to="/login" />
           </Switch>
         </BrowserRouter>
       </CardProvider>

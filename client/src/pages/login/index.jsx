@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/useAuth";
 import axios from "axios";
 
 import eyeIMG from "../../assets/eye.png";
 import eyeOffIMG from "../../assets/eye-off.png";
-import keenerIMG from "../../assets/keener.png";
+import keenerIMG from "../../assets/logo.png";
 
 import "./style.scss";
 
@@ -29,12 +29,12 @@ export default function Login() {
   //Bordar no error
   const [boderInput, serBorderInput] = useState(false);
   const border = {
-    border: "1px solid red",
+    boxShadow: "inset 0 0 7px red",
   };
 
   //Form Submit
-  const [user, setUser] = useState("adm");
-  const [password, setPassword] = useState("123");
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
   const history = useHistory();
 
   const { setData } = useContext(AuthContext);
@@ -98,9 +98,7 @@ export default function Login() {
         </div>
         <div className="form-submit">
           <input type="submit" className="form-input" value="Login" />
-          <a href="https://www.google.com" className="cadastro-user">
-            Faça seu cadastro
-          </a>
+          <Link to="/new_user" className="cadastro-user">Cadastra-se</Link>
         </div>
       </form>
     </main>

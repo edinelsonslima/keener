@@ -18,9 +18,7 @@ router.post(
     const token = jwt.sign({ userId: user[0].id }, process.env.SECRET_TOKEN, {
       expiresIn: 300,
     });
-    return res.json({ auth: true, token: token });
-
-    res.status(500).json({ message: "Login inválido!" });
+    return res.json({ auth: true, token: token, user: user[0].id });
   }
 );
 

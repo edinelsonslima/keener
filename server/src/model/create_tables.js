@@ -37,13 +37,8 @@ const User = database.define("user", {
   },
   email: {
     type: Sequelize.STRING,
+    allowNull: false,
   },
-  createdAt: {
-    type: Sequelize.DATE,
-  },
-  updatedAt: {
-    type: Sequelize.DATE,
-  }
 });
 
-module.exports = {Produto, User}
+module.exports = { Produto, User };

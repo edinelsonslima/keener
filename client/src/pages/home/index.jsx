@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/useAuth";
 import { CardContext } from "../../context/useCards";
 import { handlerGet } from "../../services/api";
@@ -18,7 +18,6 @@ export default function Home() {
   const { data, setData } = useContext(AuthContext);
   const { setCards } = useContext(CardContext);
 
-  const [isAuth] = useState(data.auth);
   const [state, setState] = useState(false);
 
   const history = useHistory();
@@ -35,17 +34,25 @@ export default function Home() {
     const dataDefault = {
       auth: false,
       token: "",
+      user: "",
     };
     setData(dataDefault);
     history.push("/login");
   }
 
-  return isAuth ? (
+  return data.auth ? (
     <>
       <main className="home">
         <nav className="navbar-home">
           <img className="logo-nav" src={LogoIMG} alt="Logo Kenner" />
-          <Button nome="Logout" function={handlerLogout} />
+          <div className="ul-nav">
+            <Link to="/profile">Perfil</Link>
+            <Button
+              nome="Logout"
+              function={handlerLogout}
+              style={{ background: "#883636" }}
+            />
+          </div>
         </nav>
         <header className="header-home">
           <Button

@@ -25,7 +25,7 @@ module.exports = function(passport){
             try {
                 const {findUser} = require('./findUser')
                 const user = await findUser(username);
-                
+
                 // usuário inexistente
                 if (user.length <= 0) { return done(null, false) }
                 

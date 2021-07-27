@@ -39,7 +39,7 @@ div.overlay {
       display: flex;
       gap: 20px;
       input.adicionar,
-      button.adicionar {
+      span.voltar {
         padding: 7px;
         width: 100px;
         font-size: 16px;
@@ -52,14 +52,15 @@ div.overlay {
         font-weight: bold;
 
         &:hover {
-          filter: invert(0.01);
+          filter: invert(0.1);
         }
         &:active {
           transform: translateY(2px);
         }
       }
-      button.adicionar{
+      span.voltar{
         background-color: #3dd1fd2a;
+        text-align: center;
       }
     }
   }

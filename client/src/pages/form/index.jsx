@@ -34,7 +34,6 @@ export default function Form(props) {
   async function handlerUpdateCard(e) {
     e.preventDefault();
     const newCard = handlerUpdate(props.id, nome, descricao, preco);
-    if (!newCard) return;
     const data = await handlerGet();
     const listCards = handlerListProducts(data);
     setCards(listCards);
@@ -94,7 +93,7 @@ export default function Form(props) {
         />
         <div className="buttons">
           <input className="adicionar" type="submit" value="Adicionar" />
-          <button className="adicionar" onClick = {props.close}>Fechar</button>
+          <span className="voltar" onClick = {props.close}>Fechar</span>
         </div>
       </form>
     </div>

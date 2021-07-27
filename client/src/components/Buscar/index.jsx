@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CardContext } from "../../context/useCards";
 import { handlerSearch } from "../../services/api.js";
 import { handlerListProducts } from "../../services/showCards";
@@ -19,7 +19,37 @@ export default function Buscar() {
       setCards(listCards);
     } else setCards("");
   }
-  
+
+
+  //Busca dinâmica
+  // useEffect(() => {
+  //   var campoFiltro = document.getElementById("buscar");
+
+  //   campoFiltro.addEventListener("input", function () {
+  //     var cards = document.querySelectorAll(".flip");
+
+  //     if (this.value.length > 0) {
+  //       for (var i = 0; i < cards.length; i++) {
+  //         var card = cards[i];
+  //         var nomeCard = card.querySelector(".nome-card");
+  //         var nome = nomeCard.textContent;
+  //         var expressao = new RegExp(this.value, "i");
+
+  //         if (!expressao.test(nome)) {
+  //           card.style.display = "none";
+  //         } else {
+  //           card.style.display = "flex";
+  //         }
+  //       }
+  //     } else {
+  //       for (var i = 0; i < cards.length; i++) {
+  //         var card = cards[i];
+  //         card.style.display = "flex";
+  //       }
+  //     }
+  //   });
+  // });
+
   return (
     <div className="buscar">
       <input

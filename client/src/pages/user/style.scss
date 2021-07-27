@@ -1,0 +1,113 @@
+main.new-user {
+  align-items: center;
+  background-color: #2e606f;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 50px;
+  padding: 10px;
+  >img{
+    max-width: 500px;
+    width: 100%;
+  }
+  div.container-user {
+    border-radius: 7px;
+    border: 1px solid #ffffff69;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.207);
+    color: #ffffff;
+    max-width: 600px;
+    padding: 20px 10px;
+    width: 100%;
+
+    > div.titles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      > h1 {
+        margin-bottom: 30px;
+        text-transform: uppercase;
+      }
+
+      > h2 {
+        text-transform: lowercase;
+        margin-bottom: 30px;
+
+      }
+    }
+
+    > form {
+      display: flex;
+      flex-direction: column;
+
+      > input {
+        border-radius: 7px;
+        border: none;
+        font-size: 16px;
+        margin-bottom: 20px;
+        outline: none;
+        padding: 15px 35px 7px 10px;
+      }
+
+      > div.container-buttons {
+        display: flex;
+        justify-content: space-between;
+        > div.buttons-default {
+          display: flex;
+          gap: 20px;
+          > input[type="submit"],
+          > .back-user {
+            width: 100px;
+            height: 40px;
+            padding: 9px;
+            cursor: pointer;
+            border-radius: 7px;
+            font-size: 16px;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #02a044;
+            text-align: center;
+
+            &:hover {
+              filter: invert(0.1);
+            }
+
+            &:active {
+              transform: translateY(1.5px);
+            }
+          }
+
+          > .back-user {
+            background-color: #0000007e;
+          }
+        }
+
+        > button.delete-user {
+          padding: 9px;
+          cursor: pointer;
+          border-radius: 7px;
+          font-size: 16px;
+          outline: none;
+          border: none;
+          color: #fff;
+          font-size: 16px;
+          font-weight: bold;
+          background-color: #a00202;
+
+          &:hover {
+            filter: invert(0.1);
+          }
+
+          &:active {
+            transform: translateY(1.5px);
+          }
+        }
+      }
+    }
+  }
+}

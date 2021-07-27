@@ -1,12 +1,14 @@
 const database = require("../services/db");
 const { User } = require("../model/create_tables");
+const { QueryTypes } = require("sequelize");
 
 async function findUser(username) {
-  const user = await User.findAll({
-    where: {
-      user: username,
-    },
-  });
+  const user = await User.sequelize.query(
+    `SELECT * FROM users WHERE user = '${username}'`,
+    {
+      type: QueryTypes.SELECT,
+    }
+  );
   return user;
 }
 

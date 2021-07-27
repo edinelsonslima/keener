@@ -5,7 +5,8 @@ const AuthContext = createContext();
 const AuthProvider = (props) => {
   const dataDefault = {
     auth: false,
-    token: ''
+    token: '',
+    user: ''
   }
   const [data, setData] = useState(dataDefault);
 

@@ -6,6 +6,7 @@ const app = require("./src/services/app");
 //requires routers
 const produto = require("./src/router/route_produto");
 const login = require("./src/router/route_login");
+const new_user = require("./src/router/route_user");
 
 //MySQL
 const db = require("./src/services/db");
@@ -30,6 +31,7 @@ function verifyJWT(req, res, next) {
 
 //Rotas
 app.use("/login", login);
+app.use("/user", new_user);
 app.use("/produto", authenticationMiddleware, produto);
 
 //Iniciando servidor

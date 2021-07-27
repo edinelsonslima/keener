@@ -1,6 +1,5 @@
 main.home {
-  background: linear-gradient(0deg, #e4e4e45b, #e4e4e45b),  url("../../assets//keener.png") center;
-  background-repeat: no-repeat;
+  background: linear-gradient(0deg, #e4e4e4b8, #e4e4e4);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.309);
   display: flex;
   flex-direction: column;
@@ -26,20 +25,24 @@ main.home {
       width: 95px;
       border-radius: 7px;
     }
-
-    a {
-      align-items: center;
+    div.ul-nav {
       display: flex;
-      background: #367588;
-      border-radius: 5px;
-      color: #fff;
-      padding: 7px;
-      text-decoration: none;
-      &:hover {
-        filter: invert(0.1);
-      }
-      &:active {
-        transform: translateY(1px);
+      gap: 10px;
+      a {
+        align-items: center;
+        display: flex;
+        background: #367588;
+        border-radius: 7px;
+        color: #fff;
+        padding: 0 10px;
+        text-decoration: none;
+        font-weight: bold;
+        &:hover {
+          filter: invert(0.1);
+        }
+        &:active {
+          transform: translateY(1px);
+        }
       }
     }
   }
@@ -53,7 +56,7 @@ main.home {
     top: 0;
     max-width: 1400px;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
     background-color: #e4e4e4;
     box-shadow: 0 8px 15px #00000021;
   }

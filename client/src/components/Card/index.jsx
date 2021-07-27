@@ -6,6 +6,8 @@ import { handlerDelete, handlerGet } from "../../services/api";
 import Button from "../Button";
 import Popup from "../PopUp";
 
+import artIMG from "../../assets/seta.png";
+
 import "./style.scss";
 
 export default function Card(props) {
@@ -14,8 +16,8 @@ export default function Card(props) {
   const { setCards } = useContext(CardContext);
 
   async function handlerDeleteCard() {
-    const allCards = document.querySelectorAll("button");
-    allCards.forEach(function (card) {
+    const allCards = document.getElementsByClassName("deletar");
+    Object.values(allCards).forEach(function (card) {
       if (card) {
         card.addEventListener("dblclick", async () => {
           try {
@@ -30,27 +32,51 @@ export default function Card(props) {
             console.log(error);
           }
         });
+        card.addEventListener("click", () => {
+          card.style.background = "red";
+        });
+        card.addEventListener("mouseout", () => {
+          card.style.background = "#367588";
+        });
       }
     });
   }
 
   function handlerEditCard() {
     const allCards = document.getElementsByClassName("editar");
-    // allCards.forEach(function (card) {
-    //   if (card) {
-    //     card.addEventListener("click", async () => {
-    //       const chave = card.value;
-    //       setId(chave);
-    //     });
-    //   }
-    // });
-    state ? setState(true) : setState(false);
+    Object.values(allCards).forEach(function (card) {
+      if (card) {
+        card.addEventListener("click", async () => {
+          const chave = card.value;
+          return setId(chave);
+        });
+      }
+    });
+    return true;
   }
-
+  async function handlerShowModalEdit() {
+    const bool = await handlerEditCard();
+    if (bool) {
+      state ? setState(false) : setState(true);
+    }
+  }
   useEffect(() => {
     handlerEditCard();
     handlerDeleteCard();
   }, []);
+
+  function handlerInvertCard(id) {
+    const cards = document.querySelectorAll(".back");
+    for (let card of cards) {
+      const idCard = card.querySelector("input[type='hidden']").value;
+      if (id == idCard) {
+        const bool = card.classList.contains("invert-back");
+        bool
+          ? card.classList.remove("invert-back")
+          : card.classList.add("invert-back");
+      }
+    }
+  }
 
   return (
     <>
@@ -59,13 +85,18 @@ export default function Card(props) {
           <h1 className="nome-card">{props.nome}</h1>
           <p className="descricao-card">{props.descricao}</p>
           <p className="preco-card">{props.preco}</p>
-          <input type="hidden" value={props.chave} />
+        </div>
+        <div
+          className="button-invert"
+          onClick={() => handlerInvertCard(props.chave)}
+        >
+          <img src={artIMG} alt="icone seta"/>
         </div>
         <div className="back">
           <Button
             nome="Editar"
             identify="editar"
-            function={handlerEditCard}
+            function={handlerShowModalEdit}
             value={props.chave}
           >
             <Popup open={state} id={id} update />
@@ -77,6 +108,7 @@ export default function Card(props) {
             value={props.chave}
           />
           <small className="span">Duplo click para apagar!</small>
+          <input type="hidden" value={props.chave} />
         </div>
       </div>
     </>

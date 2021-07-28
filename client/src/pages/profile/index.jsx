@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
-import { AuthContext } from "../../context/useAuth";
 import { handlerSearchUser } from "../../services/api";
 
 import User from "../user";
@@ -8,12 +7,11 @@ import User from "../user";
 import "./style.scss";
 
 export default function Profile() {
-  const { data } = useContext(AuthContext);
   const [user, setUser] = useState([""]);
 
   useEffect(() => {
     async function searchUser() {
-      const response = await handlerSearchUser(data.user);
+      const response = await handlerSearchUser(sessionStorage.getItem("user_id"));
       if (response.length >= 0) {
         setUser(response);
       }
@@ -21,13 +19,14 @@ export default function Profile() {
     searchUser();
   }, []);
 
-  return data.auth ? (
+  return sessionStorage.getItem("auth") ? (
     <User
       title={`Olá ${user[0].user}`}
       id={user[0].id}
       enviar="Atualizar"
       back="/"
       update
+      delete
     />
   ) : (
     <Redirect to="/login" />

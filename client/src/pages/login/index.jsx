@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { AuthContext } from "../../context/useAuth";
 import axios from "axios";
 
 import eyeIMG from "../../assets/eye.png";
@@ -37,8 +36,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  const { setData } = useContext(AuthContext);
-
   async function handlePostLogin(e) {
     e.preventDefault();
     try {
@@ -50,7 +47,8 @@ export default function Login() {
           password: password,
         },
       });
-      setData(data);
+      sessionStorage.setItem("auth", data.auth);
+      sessionStorage.setItem("user_id", data.user);
       serBorderInput(false);
       history.push("/");
     } catch (error) {

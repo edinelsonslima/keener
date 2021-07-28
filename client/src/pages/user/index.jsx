@@ -73,6 +73,7 @@ export default function NewUser(props) {
         setEmail("");
         setPassword("");
         setClickDelete(false);
+        sessionStorage.clear();
         history.push("/login");
         return;
       }
@@ -140,9 +141,11 @@ export default function NewUser(props) {
               </Link>
             </div>
 
-            <button className="delete-user" onClick={handlerDelete}>
-              Deletar
-            </button>
+            {props.delete ? (
+              <button className="delete-user" onClick={handlerDelete}>
+                Deletar
+              </button>
+            ) : null}
           </div>
         </form>
       </div>

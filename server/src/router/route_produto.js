@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Produto } = require("../model/create_tables");
+const { Product } = require("../model");
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
@@ -10,25 +10,25 @@ router.use(function timeLog(req, res, next) {
 
 // Rota para listar todos os produtos
 router.get("/", async function (req, res) {
-  const response = await Produto.findAll();
+  const response = await Product.findAll();
   res.json(response);
 });
 
 // Rota para buscar produto especifico
 router.get("/:id", async function (req, res) {
-  const responseId = await Produto.findAll({
+  const responseId = await Product.findAll({
     where: { id: req.params.id },
   });
 
-  const responseNome = await Produto.findAll({
+  const responseNome = await Product.findAll({
     where: { nome: req.params.id },
   });
 
-  const responsePreco = await Produto.findAll({
+  const responsePreco = await Product.findAll({
     where: { preco: req.params.id },
   });
 
-  const responseDesc = await Produto.findAll({
+  const responseDesc = await Product.findAll({
     where: { descricao: req.params.id },
   });
 
@@ -48,7 +48,7 @@ router.get("/:id", async function (req, res) {
 
 // Rota para adicionar novo produto
 router.post("/", async function (req, res) {
-  const response = await Produto.create({
+  const response = await Product.create({
     nome: req.body.nome,
     preco: req.body.preco,
     descricao: req.body.descricao,
@@ -58,7 +58,7 @@ router.post("/", async function (req, res) {
 
 //Rota put
 router.put("/:id", async function (req, res) {
-  await Produto.update(
+  await Product.update(
     {
       nome: req.body.nome,
       preco: req.body.preco,
@@ -71,23 +71,23 @@ router.put("/:id", async function (req, res) {
     }
   );
 
-  const response = await Produto.findByPk(req.params.id);
+  const response = await Product.findByPk(req.params.id);
   if (!response) return res.status(204).json();
   return res.json(response);
 });
 
 //Rota Delete
 router.delete("/:id", async function (req, res) {
-  const response = await Produto.findByPk(req.params.id)
+  const response = await Product.findByPk(req.params.id)
   if(!response) return res.send(false).status(400)
 
-  await Produto.destroy({
+  await Product.destroy({
     where: {
       id: req.params.id,
     },
   });
 
-  const responseDel = await Produto.findByPk(req.params.id);
+  const responseDel = await Product.findByPk(req.params.id);
   if (!responseDel) return res.send(true);
   return res.json(responseDel).status(404);
 });

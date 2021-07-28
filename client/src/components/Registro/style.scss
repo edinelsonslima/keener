@@ -1,0 +1,31 @@
+details {
+  display: flex;
+  width: 100%;
+
+  > summary.title-registro {
+    margin-top: 40px;
+    font-size: 1.5em;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    > thead > tr > th,
+    > tbody > tr > td {
+      border: 1px solid #bfbfbf;
+      text-align: center;
+      padding: 8px;
+      max-width: 20px;
+      overflow-x: scroll;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    > tbody > tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  }
+}

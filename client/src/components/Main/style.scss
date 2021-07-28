@@ -1,4 +1,4 @@
-section.produtos {
+section.produtos,section.historico {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -22,4 +22,8 @@ section.produtos {
     color: #344B94;
     text-shadow: 0 0 1px rgba(0, 0, 0, 0.541);
   }
+}
+
+section.historico{
+  padding-top: 80px;
 }

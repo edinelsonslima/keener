@@ -48,6 +48,7 @@ export default function Card(props) {
       if (card) {
         card.addEventListener("click", async () => {
           const chave = card.value;
+          console.log(chave);
           return setId(chave);
         });
       }

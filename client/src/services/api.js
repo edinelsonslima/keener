@@ -158,3 +158,50 @@ export const handlerDeleteUser = async (id) => {
     return false;
   }
 };
+
+
+//Rotas de Registros
+export const handlerGetRegister = async () => {
+  try {
+    const { data } = await axios({
+      method: "GET",
+      url: "/registro/full",
+      mode: "cors",
+      cache: "default",
+    });
+    return data;
+  } catch (error) {
+    console.log("Get all produtos: " + error);
+    return false;
+  }
+};
+
+export const handlerGetEdited = async () => {
+  try {
+    const { data } = await axios({
+      method: "GET",
+      url: "/registro/edited",
+      mode: "cors",
+      cache: "default",
+    });
+    return data;
+  } catch (error) {
+    console.log("Get all produtos: " + error);
+    return false;
+  }
+};
+
+export const handlerGetDeleted = async () => {
+  try {
+    const { data } = await axios({
+      method: "GET",
+      url: "/registro/deleted",
+      mode: "cors",
+      cache: "default",
+    });
+    return data;
+  } catch (error) {
+    console.log("Get all produtos: " + error);
+    return false;
+  }
+};

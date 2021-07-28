@@ -20,35 +20,53 @@ export default function Buscar() {
     } else setCards("");
   }
 
+  // Busca dinâmica
+  useEffect(() => {
+    let campoFiltro = document.getElementById("buscar");
 
-  //Busca dinâmica
-  // useEffect(() => {
-  //   var campoFiltro = document.getElementById("buscar");
+    campoFiltro.addEventListener("input", function () {
+      let rows = document.querySelectorAll(".tr-table");
 
-  //   campoFiltro.addEventListener("input", function () {
-  //     var cards = document.querySelectorAll(".flip");
+      if (this.value.length > 0) {
+        for (let i = 0; i < rows.length; i++) {
+          let row = rows[i];
+          let id_pd = row.querySelector(".td-id_pd");
+          let td_nome = row.querySelector(".td-nome");
+          let td_descricao = row.querySelector(".td-descricao");
+          let td_preco = row.querySelector(".td-preco");
+          // let td_createdAt = row.querySelector(".td-createdAt");
+          // let td_updateAt = row.querySelector(".td-updateAt");
 
-  //     if (this.value.length > 0) {
-  //       for (var i = 0; i < cards.length; i++) {
-  //         var card = cards[i];
-  //         var nomeCard = card.querySelector(".nome-card");
-  //         var nome = nomeCard.textContent;
-  //         var expressao = new RegExp(this.value, "i");
+          let id = id_pd.textContent;
+          let nome = td_nome.textContent;
+          let descricao = td_descricao.textContent;
+          let preco = td_preco.textContent;
+          // let createdAt = td_createdAt.textContent;
+          // let updateAt = td_updateAt.textContent;
 
-  //         if (!expressao.test(nome)) {
-  //           card.style.display = "none";
-  //         } else {
-  //           card.style.display = "flex";
-  //         }
-  //       }
-  //     } else {
-  //       for (var i = 0; i < cards.length; i++) {
-  //         var card = cards[i];
-  //         card.style.display = "flex";
-  //       }
-  //     }
-  //   });
-  // });
+          let expressao = new RegExp(this.value, "i");
+
+          if (
+            !expressao.test(id) &&
+            !expressao.test(nome) &&
+            !expressao.test(descricao) &&
+            !expressao.test(preco)
+            // !expressao.test(createdAt) &&
+            // !expressao.test(updateAt)
+          ) {
+            row.style.display = "none";
+          } else {
+            row.style.display = "";
+          }
+        }
+      } else {
+        for (let i = 0; i < rows.length; i++) {
+          let row = rows[i];
+          row.style.display = "";
+        }
+      }
+    });
+  }, []);
 
   return (
     <div className="buscar">

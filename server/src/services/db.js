@@ -23,9 +23,29 @@ database
   });
 
 //Inicializa o models para criar a table caso não exista
-require("../model/create_tables");
+require("../model");
 
-//Sincroniza o banco de dados e trata
+//Cirando os Triggers
+const {
+  TRG_register,
+  TRG_edited,
+  TRG_deleted,
+  Exits,
+} = require("./db_query");
+
+const response = database.query(Exits);
+
+setTimeout(() => {
+  response.then((verify) => {
+    if (verify[0].length == 0) {
+      database.query(TRG_register);
+      database.query(TRG_edited);
+      database.query(TRG_deleted);
+    }
+  });
+}, 500)
+
+// Sincroniza o banco de dados e trata
 try {
   database.sync();
   console.log("Database sincronizado com sucesso");
@@ -33,4 +53,4 @@ try {
   console.log("House o seguinte erro na sincronização: \n" + error);
 }
 
-module.exports = database
+module.exports = database;

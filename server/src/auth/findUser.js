@@ -1,5 +1,5 @@
-const database = require("../services/db");
-const { User } = require("../model/create_tables");
+require("../services/db");
+const { User } = require("../model");
 const { QueryTypes } = require("sequelize");
 
 async function findUser(username) {

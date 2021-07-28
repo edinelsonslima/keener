@@ -1,11 +1,13 @@
 import { useEffect, useContext } from "react";
 import { handlerGet } from "../../services/api";
 import { handlerListProducts } from "../../services/showCards";
-
-import "./style.scss";
 import { CardContext } from "../../context/useCards";
 
-export default function Produtos() {
+import Registro from "../Registro";
+
+import "./style.scss";
+
+export default function Main(props) {
   const { cards, setCards } = useContext(CardContext);
 
   useEffect(() => {
@@ -17,9 +19,15 @@ export default function Produtos() {
       }
     }
     handlerGetProducts();
-  },[]);
+  }, []);
 
-  return (
+  return props.historico ? (
+    <section className="historico">
+      <Registro register title="Todos Adicionados"/>
+      <Registro edited title="Todos Editados"/>
+      <Registro deleted title="Todos Deletados"/>
+    </section>
+  ) : (
     <section className="produtos">
       {cards ? (
         Object.values(cards).map((card) => {

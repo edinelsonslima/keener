@@ -29,7 +29,7 @@
 ### **Rode na sua maquina**
  - Crie um banco destinado para a aplicação
 - - As tabelas e triggers serão gerados automaticamente
-- No arquivo **.env.exemple** renomeio para **.env**
+- O arquivo **.env.example** dentro de server renomeie para **.env**
 - - Logo em seguida siga as instruções contidas nele.
 - Na pasta **client** rode um yarn install
 - - Vai instalar as dependências do frontend

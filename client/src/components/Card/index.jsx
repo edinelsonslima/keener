@@ -70,7 +70,7 @@ export default function Card(props) {
     const cards = document.querySelectorAll(".back");
     for (let card of cards) {
       const idCard = card.querySelector("input[type='hidden']").value;
-      if (id == idCard) {
+      if (id === Number(idCard)) {
         const bool = card.classList.contains("invert-back");
         bool
           ? card.classList.remove("invert-back")

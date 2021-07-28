@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { CardContext } from "../../context/useCards";
 import { handlerGet } from "../../services/api";

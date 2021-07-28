@@ -33,7 +33,7 @@ export default function Form(props) {
 
   async function handlerUpdateCard(e) {
     e.preventDefault();
-    const newCard = handlerUpdate(props.id, nome, descricao, preco);
+    handlerUpdate(props.id, nome, descricao, preco);
     const data = await handlerGet();
     const listCards = handlerListProducts(data);
     setCards(listCards);

@@ -18,6 +18,7 @@ router.post(
     const token = jwt.sign({ userId: user[0].id }, process.env.SECRET_TOKEN, {
       expiresIn: 300,
     });
+    
     res.setHeader("token", token);
     return res.json(user[0].id);
   }

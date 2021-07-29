@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { CardContext } from "../../context/useCards";
+import { CardContext } from "../../context/CardContext";
 import {
   handlerAdd,
   handlerGet,

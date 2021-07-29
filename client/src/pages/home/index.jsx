@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
-import { CardContext } from "../../context/useCards";
+import { Link, useHistory } from "react-router-dom";
+import { CardContext } from "../../context/CardContext";
+import { AuthContext } from "../../context/AuthContext";
 import { handlerGet } from "../../services/api";
 import { handlerListProducts } from "../../services/showCards";
 
@@ -14,12 +15,12 @@ import LogoIMG from "../../assets/logo.png";
 import "./style.scss";
 
 export default function Home() {
+  const history = useHistory();
   const { setCards } = useContext(CardContext);
+  const { handlerLogout } = useContext(AuthContext);
 
   const [state, setState] = useState(false);
   const [historico, setHistorico] = useState(false);
-
-  const history = useHistory();
 
   async function handlerGetProducts() {
     const data = await handlerGet();
@@ -29,12 +30,14 @@ export default function Home() {
     }
   }
 
-  function handlerLogout() {
-    sessionStorage.clear();
-    history.push("/login");
+  function logout() {
+    const res = handlerLogout();
+    if (res) {
+      history.push("/login");
+    }
   }
 
-  return sessionStorage.getItem("auth") ? (
+  return (
     <>
       <main className="home">
         <nav className="navbar-home">
@@ -43,7 +46,7 @@ export default function Home() {
             <Link to="/profile">Perfil</Link>
             <Button
               nome="Logout"
-              function={handlerLogout}
+              function={logout}
               style={{ background: "#883636" }}
             />
           </div>
@@ -72,7 +75,5 @@ export default function Home() {
         <Main historico={historico} />
       </main>
     </>
-  ) : (
-    <Redirect to="/login" />
   );
 }

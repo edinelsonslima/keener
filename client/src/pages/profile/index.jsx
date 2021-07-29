@@ -11,15 +11,15 @@ export default function Profile() {
 
   useEffect(() => {
     async function searchUser() {
-      const response = await handlerSearchUser(sessionStorage.getItem("user_id"));
-      if (response.length >= 0) {
-        setUser(response);
-      }
+      // const response = await handlerSearchUser(torage.getItem("user_id"));
+      // if (response.length >= 0) {
+      //   setUser(response);
+      // }
     }
     searchUser();
   }, []);
 
-  return sessionStorage.getItem("auth") ? (
+  return (
     <User
       title={`Olá ${user[0].user}`}
       id={user[0].id}
@@ -28,7 +28,5 @@ export default function Profile() {
       update
       delete
     />
-  ) : (
-    <Redirect to="/login" />
   );
 }

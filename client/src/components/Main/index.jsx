@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react";
 import { handlerGet } from "../../services/api";
 import { handlerListProducts } from "../../services/showCards";
-import { CardContext } from "../../context/useCards";
+import { CardContext } from "../../context/CardContext";
 
 import Registro from "../Registro";
 

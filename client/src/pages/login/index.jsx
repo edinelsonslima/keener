@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
+// import axios from "axios";
 
 import eyeIMG from "../../assets/eye.png";
 import eyeOffIMG from "../../assets/eye-off.png";
@@ -35,24 +36,15 @@ export default function Login() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+  const { handlePostLogin } = useContext(AuthContext);
 
-  async function handlePostLogin(e) {
+  async function handlerLogin(e) {
     e.preventDefault();
-    try {
-      const { data } = await axios({
-        method: "POST",
-        url: "/login",
-        data: {
-          user: user,
-          password: password,
-        },
-      });
-      sessionStorage.setItem("auth", data.auth);
-      sessionStorage.setItem("user_id", data.user);
-      serBorderInput(false);
+    const res = await handlePostLogin(user, password);
+    if (res) {
       history.push("/");
-    } catch (error) {
-      console.error("Erro no login: " + error);
+    } else {
+      serBorderInput(false);
       serBorderInput(true);
     }
   }
@@ -62,7 +54,12 @@ export default function Login() {
       <div className="img-container">
         <img src={keenerIMG} alt="Logo da keener.io innovations" />
       </div>
-      <form className="login-form" action="/login" method="post" onSubmit={handlePostLogin}>
+      <form
+        className="login-form"
+        action="/login"
+        method="post"
+        onSubmit={handlerLogin}
+      >
         <div className="form-container">
           <label className="form-label" htmlFor="user">
             User
@@ -74,7 +71,7 @@ export default function Login() {
             name="user"
             id="user"
             value={user}
-            onChange={(e) => setUser((e.target.value))}
+            onChange={(e) => setUser(e.target.value)}
           />
         </div>
         <div className="form-container">
@@ -96,7 +93,9 @@ export default function Login() {
         </div>
         <div className="form-submit">
           <input type="submit" className="form-input" value="Login" />
-          <Link to="/new_user" className="cadastro-user">Cadastra-se</Link>
+          <Link to="/new_user" className="cadastro-user">
+            Cadastra-se
+          </Link>
         </div>
       </form>
     </main>

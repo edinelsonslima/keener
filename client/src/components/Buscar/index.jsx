@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { CardContext } from "../../context/useCards";
+import { CardContext } from "../../context/CardContext";
 import { handlerSearch } from "../../services/api.js";
 import { handlerListProducts } from "../../services/showCards";
 

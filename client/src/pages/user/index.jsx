@@ -73,7 +73,7 @@ export default function NewUser(props) {
         setEmail("");
         setPassword("");
         setClickDelete(false);
-        sessionStorage.clear();
+        // sessionStorage.clear();
         history.push("/login");
         return;
       }

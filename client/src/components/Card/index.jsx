@@ -48,23 +48,19 @@ export default function Card(props) {
       if (card) {
         card.addEventListener("click", async () => {
           const chave = card.value;
-          console.log(chave);
           return setId(chave);
         });
       }
     });
     return true;
   }
+  
   async function handlerShowModalEdit() {
     const bool = await handlerEditCard();
     if (bool) {
       state ? setState(false) : setState(true);
     }
   }
-  useEffect(() => {
-    handlerEditCard();
-    handlerDeleteCard();
-  }, []);
 
   function handlerInvertCard(id) {
     const cards = document.querySelectorAll(".back");
@@ -79,6 +75,11 @@ export default function Card(props) {
     }
   }
 
+  useEffect(() => {
+    handlerEditCard();
+    handlerDeleteCard();
+  }, []);
+
   return (
     <>
       <div className="flip">
@@ -91,7 +92,7 @@ export default function Card(props) {
           className="button-invert"
           onClick={() => handlerInvertCard(props.chave)}
         >
-          <img src={artIMG} alt="icone seta"/>
+          <img src={artIMG} alt="icone seta" />
         </div>
         <div className="back">
           <Button

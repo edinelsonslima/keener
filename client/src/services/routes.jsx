@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch } from "react-router-dom";
-import { CardProvider } from "../context/CardContext";
 import { AuthProvider } from "../context/AuthContext";
+import { CardProvider } from "../context/CardContext";
 
 import CustomRoute from "../components/CustomRoute";
 
@@ -10,6 +10,9 @@ import Profile from "../pages/profile";
 import Home from "../pages/home";
 
 export default function Routes() {
+  
+
+
   return (
     <AuthProvider>
       <CardProvider>

@@ -9,9 +9,6 @@ const registro = require("./src/router/route_register");
 const login = require("./src/router/route_login");
 const new_user = require("./src/router/route_user");
 
-//MySQL
-// require("./src/services/db");
-
 // Verifica se esta logado
 const jwt = require("jsonwebtoken");
 

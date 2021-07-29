@@ -2,7 +2,6 @@ import { useEffect, useContext } from "react";
 import { handlerGet } from "../../services/api";
 import { handlerListProducts } from "../../services/showCards";
 import { CardContext } from "../../context/CardContext";
-import { AuthContext } from "../../context/AuthContext";
 
 import Registro from "../Registro";
 
@@ -10,7 +9,6 @@ import "./style.scss";
 
 export default function Main(props) {
   const { cards, setCards } = useContext(CardContext);
-  const { loading } = useContext(AuthContext);
 
   useEffect(() => {
     async function handlerGetProducts() {

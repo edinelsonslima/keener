@@ -16,11 +16,7 @@ export default function CustomRoute(props) {
       return <Redirect to="/login" />;
     }
   }
-
-  if(props.from === '*') {
-    return <Redirect to="/login" />;
-  }
-
+  
   return <Route {...props}/>
   
 }

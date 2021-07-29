@@ -27,14 +27,20 @@ main.home {
     }
     div.ul-nav {
       display: flex;
+      align-items: center;
       gap: 10px;
+      span.user-name{
+        color: #fff;
+        font-weight: bold;
+      }
+
       a {
         align-items: center;
         display: flex;
         background: #367588;
         border-radius: 7px;
         color: #fff;
-        padding: 0 10px;
+        padding: 7px 10px;
         text-decoration: none;
         font-weight: bold;
         &:hover {
@@ -48,7 +54,15 @@ main.home {
   }
 
   header.header-home {
+
+    div.wrapper-header{
+      display: flex;
+      gap: 10px;
+    }
+
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 10px;
     margin-top: 60px;
     padding: 15px 7px;
@@ -59,5 +73,14 @@ main.home {
     z-index: 2;
     background-color: #e4e4e4;
     box-shadow: 0 8px 15px #00000021;
+    @media only screen and(max-width: 816px){
+      justify-content: center;
+      div.wrapper-header{
+        width: 100%;
+        justify-content: space-around;
+      }
+    }
   }
+
+
 }

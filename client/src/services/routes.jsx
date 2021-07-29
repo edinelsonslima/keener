@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { AuthProvider } from "../context/AuthContext";
 import { CardProvider } from "../context/CardContext";
 
@@ -8,6 +8,9 @@ import Login from "../pages/login";
 import User from "../pages/user";
 import Profile from "../pages/profile";
 import Home from "../pages/home";
+
+import Loading from "../components/Loading";
+
 
 export default function Routes() {
   
@@ -24,7 +27,7 @@ export default function Routes() {
             <CustomRoute path="/login" exact component={Login} />
             <CustomRoute isPrivate path="/profile" exact component={Profile} />
             <CustomRoute isPrivate path="/" exact component={Home} />
-            <CustomRoute from="*" to="/login" />
+
           </Switch>
         </BrowserRouter>
       </CardProvider>

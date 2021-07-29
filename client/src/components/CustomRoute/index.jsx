@@ -2,17 +2,25 @@ import { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
-export default function CustomRoute({ isPrivate, ...rest }) {
+import Loading from "../Loading";
+
+export default function CustomRoute(props) {
   const { authenticated, loading } = useContext(AuthContext);
+
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   if (authenticated !== undefined) {
-    if (isPrivate && !authenticated) {
+    if (props.isPrivate && !authenticated) {
       return <Redirect to="/login" />;
     }
   }
 
-  return <Route {...rest} />;
+  if(props.from === '*') {
+    return <Redirect to="/login" />;
+  }
+
+  return <Route {...props}/>
+  
 }
